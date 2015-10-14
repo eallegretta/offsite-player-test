@@ -1,0 +1,113 @@
+/* ================================================================================
+|
+| HEY DUMMY
+| DON'T EDIT THE .CSS
+| DO EDIT THE .LESS
+|
+================================================================================ */
+
+@import "./_mixins.less";
+@import "./variables.less";
+@import "./layout.less";
+@import "./loading.less";
+@import "./controls.less";
+@import "./sharing.less";
+@import "./responsive.less";
+
+
+
+#episode-category, #episode-host {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@timerRotation: 480;
+
+#episode-ended {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    display: none;
+    color: #FFF;
+    padding: @margin;
+    text-align: center;
+
+    h2 {
+        margin-bottom: @margin;
+    }
+
+    & > .episode {
+        width: ~"calc(50% - " (@margin*2) ~")";
+        margin: 0 @margin @margin;
+        float: left;
+        // text-align: left;
+        [id$='title'] {
+            color: #FFFFFF;
+            font-family: @headingsFontFamily;
+            font-weight: @headingsFontWeight;
+            cursor: pointer;
+        }
+
+        [id$="date"] {
+            font-family: @baseFontFamily;
+            font-weight: @baseFontWeight;
+        }
+    }
+
+    #replay {
+        clear: both;
+        margin-top: @margin;
+    }
+
+
+    #timerAnimation {
+        @duration: 10000ms;
+        position: absolute;
+        top: (@margin + 20px);
+        left: 50%;
+        margin: 0 0 0 -30px;
+        display: block;
+        border-radius: 100%;
+        -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        stroke: #454747;
+
+        .circle-fill {
+            stroke-dasharray: @timerRotation;
+            stroke-dashoffset: @timerRotation;
+            stroke: #ccc;
+        }
+
+        &.auto {
+            #timerAnimation {
+                .circle-fill {
+                    -webkit-animation: fill 5s 1 linear forwards;
+                    animation: fill 5s 1 linear forwards;
+                }
+            }
+        }
+    }
+
+    &.loaded {
+        display: block;
+    }
+}
+
+@keyframes fill {
+    from {
+        stroke-dashoffset: @timerRotation;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}

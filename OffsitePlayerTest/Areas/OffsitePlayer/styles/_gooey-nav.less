@@ -1,0 +1,92 @@
+//vars
+@bg:#673ab7;
+@fg:darken(@bg,20%);
+@pi:3.14;
+@ballSize: 50px;
+@margin: 20px;
+
+//config
+@menu-items:5;
+@open-distance:@ballSize*3;
+@opening-angle:@pi*2;
+
+.goo{
+  filter:url('#shadowed-goo');
+}
+.ball{
+  display:block;
+  background:@bg;
+  border-radius:50%;
+  width:@ballSize;
+  height:@ballSize;
+  position:absolute;
+  top:0;
+  left: 0;
+  color:@fg;
+  text-align:center;
+  line-height:@ballSize;
+  transform:translate3d(0,0,0.1);
+  transition:transform ease-out 200ms;
+}
+#services {
+    opacity: 1;
+    .goo();
+    position: fixed;
+    // width: (@ballSize + @margin) * @menu-items;
+    // height: @ballSize;
+    margin: 0;
+    left: @margin;
+    bottom: @margin;
+    z-index: 100;
+    input.menu-open {
+        // display:none;
+        position: absolute;
+        z-index: 222;
+    }
+    li {
+        list-style-type: none;
+        display: block;
+        float: left;
+        margin: 0;
+        .ball();
+        transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        transform: scale(.01);
+        a {
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        span {
+            float: left;
+            display: block;
+            font-size: @ballSize/2;
+            margin: 0 @ballSize 0 @ballSize/4;
+            &:before {
+                color: #FFFFFF;
+            }
+        }
+    }
+}
+
+#sharing.open {
+    #services {
+        opacity: 1;
+        li {
+            @column: @ballSize + 20px;
+            .mixin-loop (@i) when (@i <=@menu-items) {
+                @ii: @i - 1;
+                &:nth-of-type(@{i}) {
+                    transition-duration: 50ms + (100ms*@i);
+                    @angle: (@ii*.4) - 1.6;
+                    transform: translate3d(cos(@angle) * @open-distance, sin(@angle)*@open-distance, 0);
+                }
+                .mixin-loop(@i + 1);
+            }
+            .mixin-loop(1);
+            &:hover {
+                background: lighten(@bg, 20%);
+                color: @fg;
+            }
+        }
+    }
+}

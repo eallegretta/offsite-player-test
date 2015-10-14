@@ -1,0 +1,189 @@
+﻿body {
+    font-family: @baseFontFamily;
+    //font-weight: @baseFontWeight;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    // background: #151C1F;
+    color: white;
+    overflow: hidden;
+}
+
+a {
+    color: @btrPink;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: @headingsFontFamily;
+    font-weight: @headingsFontWeight;
+    margin: 0;
+}
+
+h4 {
+    font-size: 13px;
+    line-height: 16px;
+}
+
+
+.container {
+
+    margin: 0 auto;
+    // border: 1px solid #ccc;
+    width: auto;
+    height: @playerHeight;
+    overflow: hidden;
+    position: relative;
+    background: @backgroundColor;
+    padding: @containerPadding;
+
+    #host-card {
+        float: right;
+        height: 100%;
+        width: @hostCardWidth;
+        margin-top: (@containerPadding * -1) + @hostCardPadding;
+        margin-right: (@containerPadding * -1) + @hostCardPadding;
+
+        #host-image-link {
+            display: block;
+            margin: 0;
+            position: relative;
+            border: 0px;
+            z-index: @zindex-host-card;
+
+            img {
+                display: block;
+                width: 100%;
+                border: 0;
+            }
+        }
+    }
+
+
+    #logo {
+        position: absolute;
+        bottom: @bottomSpacing;
+        width: 100%;
+
+        a {
+            display: block;
+            float: right;
+            margin-right: @hostCardWidth + (@containerPadding * 2) + @hostCardPadding;
+            color: @gray;
+
+            em {
+                font-family: "phosphatesolid";
+                font-style: normal;
+            }
+        }
+    }
+
+    #metadata {
+        position: relative;
+        height: 48px;
+        z-index: @zindex-metadata;
+        padding-left: @playHeight + @containerPadding;
+
+        h3 {
+            a {
+                font-size: 16px;
+                font-family: @titlesFontFamily;
+            }
+        }
+
+        address {
+            font-size: 14px;
+            font-style: normal;
+
+            &:before {
+                content: "by ";
+                color: @grayLight;
+            }
+        }
+    }
+
+    ul.tools {
+        z-index: @zindex-controls;
+        position: absolute;
+        bottom: @bottomSpacing;
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-size: 32px;
+            overflow: hidden;
+
+            a, input[name="audioEnhancer"] + label {
+                background-repeat: no-repeat;
+                display: block;
+                color: #FFFFFF;
+                font-size: 20px;
+                line-height: 1;
+                min-height: 20px;
+                text-decoration: none;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+                font-family: 'blogtalkradio-icons';
+                margin: 0 1px 0 0;
+                padding: 0 5px;
+                width: 16px;
+                height: 16px;
+                .opacity(0.67);
+                .transition(opacity @animationSpeed*4 @animationEquation);
+
+                &:hover {
+                    .opacity(1);
+                }
+            }
+
+            input[name="audioEnhancer"] {
+                display: none;
+
+                & + label {
+                    content: "G";
+                    display: block;
+                    display: none;
+                    float: left;
+                    visibility: visible;
+                    cursor: pointer;
+                    color: #000000;
+                }
+
+                &:checked + label {
+                    color: #FFFFFF;
+                }
+            }
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .share {
+            background-image: url('../images/sprites.png');
+            width: 12px;
+        }
+
+        .download {
+            background-image: url('../images/sprites.png');
+            background-position: -22px 0px;
+            width: 21px;
+        }
+
+        #btn-follow {
+            background-image: url('../images/sprites.png');
+            background-position: -49px 0px;
+            width: 20px;
+        }
+    }
+}

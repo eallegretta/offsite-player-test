@@ -1,0 +1,140 @@
+﻿#sharing {
+    background: hsla(hue(@brandColor),10%,18%,1);
+    #gradient.vertical(lighten(@backgroundColor,-15%),lighten(@backgroundColor,5%));
+    opacity: 1;
+    padding: @margin;
+    position: fixed;
+    z-index: @zindex-modal;
+    .transition(all @animationSpeed ease-in);
+    bottom: inherit;
+    top: -150px;
+    left: 0;
+    right: @hostCardWidth + 4;
+
+    &.open {
+        // bottom: 0;
+        top: 0;
+        .transition(all @animationSpeed @animationEquation);
+    }
+
+    a.close {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 48px;
+    }
+
+    #embed {
+        margin-left: 180px;
+
+        input {
+            background: hsl(hue(@brandColor),5%,28%);
+            border: none;
+            .box-shadow(inset @shadowDefault);
+            color: #ffffff;
+            display: block;
+            width: 100%;
+            margin: 5px 0 0;
+            padding: 0 5px;
+            line-height: 32px;
+            height: 32px;
+            font-size: 14px;
+            .border-radius(4px);
+            font-family: monospace;
+        }
+    }
+
+    h3 {
+        color: #ffffff;
+        margin: 0;
+        display: block;
+        font-size: 12px;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    #services {
+        margin: 0;
+        padding: 0;
+        // width: 50%;
+        float: left;
+        display: block;
+
+        &:after {
+            display: block;
+            clear: both;
+            content: "";
+        }
+
+        li {
+            list-style-type: none;
+            display: block;
+            float: left;
+            margin: 0 0 0 0;
+            // transform:rotate(-360deg);
+            transform: scale(0.01);
+            .transition(transform @animationSpeed @animationEquation);
+
+            a {
+                color: #FFFFFF;
+                display: block;
+                padding: 0;
+                margin: 0 10px 0 0;
+                line-height: 48px;
+                width: 32px;
+                overflow: hidden;
+                white-space: nowrap;
+
+                span {
+                    float: left;
+                    display: block;
+                    font-size: 32px;
+                    margin: 0 10px 0 0;
+                }
+            }
+
+            &:nth-of-type(2) {
+                -webkit-transition-delay: 100ms;
+                transition-delay: 100ms;
+            }
+
+            &:nth-of-type(3) {
+                -webkit-transition-delay: 200ms;
+                transition-delay: 200ms;
+            }
+
+            &:nth-of-type(4) {
+                -webkit-transition-delay: 300ms;
+                transition-delay: 300ms;
+            }
+
+            .facebook:before {
+                color: @facebook;
+                background: #FFFFFF;
+                .border-radius(6px);
+            }
+
+            .twitter:before {
+                color: @twitter;
+                background: #FFFFFF;
+                .border-radius(6px);
+            }
+
+            .google:before {
+                color: @google;
+                background: #FFFFFF;
+                .border-radius(6px);
+            }
+        }
+    }
+
+    &.open {
+        ul#services {
+            li {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}

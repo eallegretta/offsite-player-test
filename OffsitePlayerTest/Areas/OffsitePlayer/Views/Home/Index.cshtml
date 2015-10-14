@@ -1,0 +1,130 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Player</title>
+    @{ Html.RenderPartial("CssBundle.versioned"); }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- hack source: http://tatiyants.com/how-to-get-ie8-to-support-html5-tags-and-web-fonts/ -->
+    <!--[if lt IE 9]>
+        <script>
+            document.createElement('canvas');
+            document.createElement('section');
+            document.createElement('address');
+        </script>
+        <style type="text/css">
+            canvas, section, address {
+                display: block;
+            }
+
+            #timeline-handle {
+                border: 1px solid #CCCCCC !important;
+            }
+
+            .waveform {
+                width: 100% !important;
+            }
+        </style>
+    <![endif]-->
+</head>
+<body>
+    <section id="loading-message">
+        <div class="loading-overlay"></div>
+        <div class="loading-text">The episode file is being loaded...</div>
+    </section>
+
+    <div class="container">
+        <section id="host-card">
+            <a href="#" id="host-image-link" target="blogtalkradio"><img id="host-image" src="#" alt="" /></a>
+        </section>
+
+        <section id="logo">
+            <a href="@Url.Content("~/")" target="_top">powered by <em>BlogTalkRadio</em></a>
+        </section>
+
+        <section id="metadata">
+            <a href="#" id="episode-category" target="blogtalkradio"></a>
+            <h3><a href="#" id="episode-title" target="blogtalkradio"></a></h3>
+            <address id="by-host" style="display: none; padding-top: 5px;"><a href="#" id="episode-host" target="blogtalkradio"></a></address>
+        </section>
+
+        <section id="player-controls">
+            <a href="#" id="play"></a>
+            <canvas id="waveform-canvas" class="waveform"></canvas>
+            <div id="waveform-div" class="waveform"></div>
+            <div id="timeline-bk"><div></div></div>
+            <div id="timeline">
+                <div id="timeline-buffer" class="buffer"></div>
+                <div id="timeline-progress" class="progress">
+                    <div id="timeline-handle"></div>
+                </div>
+                <div id="timeline-tooltip"></div>
+                <div class="timeline-times">
+                    <span id="timeline-time">00:00</span>
+                    <span id="timeline-duration">00:00</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="commands">
+            <ul class="tools">
+                <li><a href="#share" class="share" id="btn-share" title="Share this episode"></a></li>
+                <li><a id="episode-download" href="#" class="download" download="#" rel="nofollow" title="Download an MP3"></a></li>
+                <!-- <li><a id="btn-follow" href="#favorite" title="Follow this host"></a></li> -->
+                <li><input type="checkbox" name="audioEnhancer" title="Audio Enhancer" id="audioEnhancer" checked="checked" /><label for="audioEnhancer" title="Enhanced Audio">G</label></li>
+            </ul>
+        </section>
+
+
+        <section id="sharing">
+            <a href="#" onclick=" document.getElementById('sharing').className = 'off';return true; " id="close-sharing" class="close">&times;</a>
+            <ul id="services">
+                <h3>Share</h3>
+                <li><a id="fb-link" href="#" target="share" title="Share on facebook" onclick=" return Socializer.share(this); " data-tracker-category="Episode Page" data-tracker-action="Share" data-tracker-label="facebook"><span data-btr-icon="T" class="facebook"></span> Facebook</a></li>
+                <li><a id="tw-link" href="#" target="share" title="Share on Twitter" onclick=" return Socializer.share(this); " data-tracker-category="Episode Page" data-tracker-action="Share" data-tracker-label="twitter"><span data-btr-icon="U" class="twitter"></span> Twitter</a></li>
+                <li>
+                    <a id="ge-link" href="#" target="share" title="Share on Google+" onclick=" return Socializer.share(this);return false; " data-tracker-category="Episode Page" data-tracker-action="Share" data-tracker-label="google+"><span data-btr-icon="R" class="google"></span> Google+</a>
+                </li>
+                <li><a id="mailto-link" href="mailto:?subject=Listen to this great podcast&message=#" data-tracker-category="Episode Page" data-tracker-action="Share" data-tracker-label="email"><span data-btr-icon="l" class="email"></span> Email</a></li>
+            </ul>
+            <div id="embed">
+                <h3>Embed</h3>
+                <input type="text" value="" id="embed-code" onclick=" select() " />
+                <input type="text" value="" id="share-link" style="display: none;" />
+            </div>
+        </section>
+
+        <section id="episode-ended">
+            <h4>
+                More from <a id="autoforward-hostname" target="_top"></a>
+            </h4>
+            <div class="episode">
+                <a id="next-episode-title">Episode Title</a>
+                <h5 id="next-episode-date">Episode Date</h5>
+            </div>
+            <div class="episode">
+                <a id="last-episode-title">Episode Title</a>
+                <h5 id="last-episode-date">Episode Date</h5>
+            </div>
+            <p id="replay">
+                <a href="#replay">replay</a>
+            </p>
+
+            <svg width="60px" height="60px" viewBox="0 0 100 100" class="circle" id="timerAnimation">
+                <circle fill="none" stroke-width="32" stroke-miterlimit="10" cx="50" cy="50" r="50" class="circle-path"></circle>
+                <circle fill="none" stroke-width="32" stroke-miterlimit="10" cx="50" cy="50" r="50" class="circle-fill"></circle>
+            </svg>
+
+        </section>
+    </div>
+    <script type="text/javascript">
+        window.apiFullUrl = location.protocol + '//' + location.host + '@Url.Content("~/")';
+    </script>
+
+    @{ Html.RenderPartial("ScriptsBundle.versioned"); }
+</body>
+</html>

@@ -1,0 +1,207 @@
+﻿#player-controls {
+    margin-top: 20px;
+
+    #play {
+        @lineSize: 2px;
+        @playSize: @playHeight - (@lineSize*2);
+        @btn-size: @playSize / 2;
+        @half-size: @playSize / 4;
+
+        .border-radius(32);
+        border: @lineSize solid rgba(255, 255, 255, 1);
+        display: block;
+        line-height: @playSize;
+        height: @playSize;
+        width: @playSize;
+        z-index: @zindex-controls;
+        position: absolute;
+        top: @containerPadding;
+
+        &:before {
+            display: block;
+            content: "";
+            box-sizing: border-box;
+            /** Positioning */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -@half-size;
+            margin-top: -@half-size;
+            /** Sizing */
+            width: @btn-size;
+            height: @btn-size;
+            /** Border styling */
+            border-style: solid;
+            border-color: transparent #FFF transparent #FFF;
+            border-width: @half-size 0 @half-size @btn-size;
+            .transform(rotate(0deg));
+            /** Animate morphing */
+            .transition(transform @animationSpeed @animationEquation, border-top-width @animationSpeed @animationEquation, border-bottom-width @animationSpeed @animationEquation);
+        }
+
+        &.isPlaying {
+            &:before {
+                .transform(rotate(180deg));
+                border-width: 0 @half-size*.8;
+                border-color: #FFFFFF;
+            }
+        }
+    }
+
+    @timelineSize: 1px;
+    @timelineHit: @playHeight;
+    @controlsPaddingLeftFix: -2px;
+
+    #timeline-bk {
+        z-index: @zindex-timeline-bk;
+        top: (@containerPadding * 2) + @playHeight + (@timelineHit - @timelineSize)/2;
+        position: absolute;
+        width: 100%;
+        
+        > div {
+            height: 1px;
+            background-color: @timelineBufferColor;
+            margin-right: @hostCardWidth + @containerPadding * 2;
+        }
+    }
+
+    #timeline {
+        @timelineHandleLeftFix: 10px;
+        @timelineHandleRightFix: 18px;
+        @timelineHandleTopFix: 10px;
+
+
+        z-index: @zindex-timeline;
+        position: relative;
+        height: @timelineHit;
+        cursor: pointer;
+        margin-right: @hostCardWidth + @containerPadding - @timelineHandleLeftFix;
+        margin-left: @timelineHandleLeftFix;
+
+        #timeline-buffer {
+            margin: 0;
+            background: @timelineBufferColor;
+            height: @timelineSize;
+            position: absolute;
+            left: 0;
+            top: (@timelineHit - @timelineSize)/2;
+            width: 100%;
+        }
+
+        #timeline-progress {
+            #gradient.horizontal(#cc286b,#e694b6);
+            .box-shadow(0 0 8px #ff006a);
+            border-right: 1px solid hsl(195,100%,60%);
+            height: @timelineSize;
+            width: 0;
+            position: absolute;
+            top: (@timelineHit - @timelineSize)/2;
+            .transition(width @animationSpeed @animationSpring);
+
+            &:hover {
+                .box-shadow(0 0 16px @btrPink);
+            }
+        }
+
+        #timeline-handle {
+            @handleSize: 16px;
+            display: block;
+            content: "";
+            position: absolute;
+            border: 2px solid transparent;
+            .border-radius(50%);
+            .box-shadow(0px 0px 1px @btrPink); //#CF2A70);
+            .box-shadow(inset 0 0 2px #FFFFFF,inset 0 0 2px #FFFFFF,inset 0 0 2px #FFFFFF,inset 0 0 2px #FFFFFF); //,0px 0px 1px @btrPink);//#CF2A70);
+            width: @handleSize;
+            height: @handleSize;
+            right: (@handleSize / -2);
+            top: (@handleSize / -2) - (@timelineSize/2);
+            .transition(border-width @animationSpeed @animationEquation, margin @animationSpeed @animationEquation, width @animationSpeed @animationEquation, height @animationSpeed @animationEquation, );
+
+
+            &:hover {
+                margin: -4px -4px 0 0;
+                width: 2px;
+                height: 2px;
+                border-width: 12px;
+                border-color: rgba(0, 0, 0, 0.2);
+                .box-shadow(inset 0 0 2px #FFFFFF,inset 0 0 2px #FFFFFF,inset 0 0 2px #FFFFFF,inset 0 0 2px #FFFFFF,0px 0px 1px #FFFFFF,0px 1px 2px @btrPink); //#CF2A70);
+            }
+        }
+
+        .timeline-times {
+            position: absolute;
+            top: @playHeight - @timelineHandleTopFix;
+            width: 100%;
+            left: @timelineHandleLeftFix * -1;
+
+            > span {
+                color: @grayLight;
+                font-size: 10px;
+                font-weight: bold;
+                line-height: 1;
+            }
+
+            #timeline-time {
+                float: left;
+            }
+
+            #timeline-duration {
+                float: right;
+                margin-right: (@timelineHandleRightFix * -1);
+            }
+        }
+
+        #timeline-tooltip {
+            @arrowSize: 6px;
+            background: darken(@backgroundColor, 10%);
+            border-radius: 2px;
+            bottom: @timelineSize + @arrowSize;
+            bottom: ~"calc(50% + " (@margin/2) ~")";
+            color: #FFFFFF;
+            display: block;
+            // display: none;
+            font-size: 12px;
+            font-weight: normal;
+            margin: 0 0 0 -23px;
+            overflow: visible;
+            padding: 4px;
+            position: absolute;
+            text-align: center;
+            width: 40px;
+            z-index: 7;
+            .opacity(0);
+            .transition(opacity @animationSpeed @animationEquation);
+
+            &.in {
+                .opacity(1);
+            }
+
+            &:after {
+                content: "";
+                display: block;
+                border: @arrowSize solid transparent;
+                border-top-color: darken(@backgroundColor, 10%);
+                border-bottom-width: 0;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -@arrowSize;
+            }
+        }
+    }
+
+    .waveform {
+        display: none;
+        position: absolute;
+        top: 9px;
+        width: ~"calc(100% - 226px)";
+        height: 100%;
+        .opacity(1);
+        z-index: @zindex-waveform;
+
+        &.show {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+﻿
+@media (max-width: @breakpointPhone) {
+    .container {
+        #metadata {
+            h3 {
+                height: 40px;
+                overflow: hidden;
+
+                a {
+                    font-size: 14px;
+                    font-family: @titlesFontFamily;
+                }
+            }
+
+            address {
+                font-size: 12px;
+            }
+        }
+
+        #host-card {
+            display: none;
+        }
+
+        #logo {
+            a {
+                margin-right: ((@containerPadding * 2)) !important;
+            }
+        }
+
+        #player-controls {
+            #timeline {
+                margin-right: 8px;
+            }
+
+            .waveform {
+                width: ~"calc(100% - 40px)";
+            }
+        }
+
+        #sharing {
+            right: 0;
+
+            #services {
+                float: none;
+            }
+
+            #embed {
+                margin-left: 0px;
+            }
+        }
+    }
+}
