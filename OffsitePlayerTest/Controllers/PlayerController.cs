@@ -21,7 +21,7 @@ namespace OffsitePlayerTest.Controllers
 
         public ActionResult Redirect()
         {
-            return Redirect("https://securebeta.blogtalkradio.com/offsiteplayer?hostId=38577&episodeId=1504885");
+            return Redirect("~/offsiteplayer?hostId=38577&episodeId=1504885");
         }
     }
 }

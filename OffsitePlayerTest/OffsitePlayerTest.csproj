@@ -15,7 +15,7 @@
     <AssemblyName>OffsitePlayerTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44302</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -80,6 +80,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\build.xml" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\index.html" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\license.txt" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\script\soundmanager2-jsmin.js" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\script\soundmanager2-nodebug-jsmin.js" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\script\soundmanager2-nodebug.js" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\script\soundmanager2.js" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\swf\soundmanager2.swf" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\swf\soundmanager2_debug.swf" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\swf\soundmanager2_flash9.swf" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\swf\soundmanager2_flash9_debug.swf" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\troubleshoot\debug.css" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\troubleshoot\debug.js" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\troubleshoot\fpgss-add-location.png" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\troubleshoot\fpgss-added-location.png" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\troubleshoot\index.html" />
+    <Content Include="Areas\OffsitePlayer\dist\player.css" />
+    <Content Include="Areas\OffsitePlayer\gulpfile.js" />
+    <Content Include="Areas\OffsitePlayer\images\sprites.png" />
+    <Content Include="Areas\OffsitePlayer\scripts\app-controller.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\audio-context-player.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\episode-service.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\gradient-fill.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\MinimumM.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\player-controls-controller.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\player-ui-controller.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\playerTest.html" />
+    <Content Include="Areas\OffsitePlayer\scripts\soundmanager-player.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\waveform-canvas-renderer.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\waveform-div-renderer.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\waveform-draw.js" />
+    <Content Include="Areas\OffsitePlayer\scripts\waveform-renderer.js" />
     <Content Include="Global.asax" />
     <Content Include="Views\Player\Kaltura.cshtml" />
     <Content Include="Views\Player\BlogTalkRadio.cshtml" />
@@ -87,6 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\OffsitePlayer\Controllers\HomeController.cs" />
+    <Compile Include="Areas\OffsitePlayer\OffsitePlayerAreaRegistration.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -96,6 +130,36 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Areas\OffsitePlayer\.bowerrc" />
+    <Content Include="Areas\OffsitePlayer\.jshintrc" />
+    <Content Include="Areas\OffsitePlayer\bower.json" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\.bower.json" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\bower.json" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\README.rdoc" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\src\make-flash8.bat" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\src\make-flash8.sh" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\src\make-flash9.bat" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\src\make-flash9.sh" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\src\SoundManager2.as" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\src\SoundManager2_AS3.as" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\src\SoundManager2_SMSound_AS3.as" />
+    <Content Include="Areas\OffsitePlayer\bower_components\soundmanager2\swf\soundmanager2_flash_xdomain.zip" />
+    <Content Include="Areas\OffsitePlayer\package.json" />
+    <Content Include="Areas\OffsitePlayer\styles\controls.less" />
+    <Content Include="Areas\OffsitePlayer\styles\layout.less" />
+    <Content Include="Areas\OffsitePlayer\styles\loading.less" />
+    <Content Include="Areas\OffsitePlayer\styles\player.less" />
+    <Content Include="Areas\OffsitePlayer\styles\responsive.less" />
+    <Content Include="Areas\OffsitePlayer\styles\sharing.less" />
+    <Content Include="Areas\OffsitePlayer\styles\variables.less" />
+    <Content Include="Areas\OffsitePlayer\styles\_gooey-nav.less" />
+    <Content Include="Areas\OffsitePlayer\styles\_mixins.less" />
+    <Content Include="Areas\OffsitePlayer\Views\Home\CssBundle.template.cshtml" />
+    <Content Include="Areas\OffsitePlayer\Views\Home\CssBundle.versioned.cshtml" />
+    <Content Include="Areas\OffsitePlayer\Views\Home\Index.cshtml" />
+    <Content Include="Areas\OffsitePlayer\Views\Home\ScriptsBundle.template.cshtml" />
+    <Content Include="Areas\OffsitePlayer\Views\Home\ScriptsBundle.versioned.cshtml" />
+    <Content Include="Areas\OffsitePlayer\Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -105,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\OffsitePlayer\Content\jwplayer\skins\dark\" />
+    <Folder Include="Areas\OffsitePlayer\Models\" />
+    <Folder Include="Areas\OffsitePlayer\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
