@@ -16,3 +16,9 @@ D:\Code\offsite-player-test\OffsitePlayerTest\bin\System.Web.Mvc.xml
 D:\Code\offsite-player-test\OffsitePlayerTest\obj\Debug\OffsitePlayerTest.csprojResolveAssemblyReference.cache
 D:\Code\offsite-player-test\OffsitePlayerTest\obj\Debug\OffsitePlayerTest.dll
 D:\Code\offsite-player-test\OffsitePlayerTest\obj\Debug\OffsitePlayerTest.pdb
+D:\Code\offsite-player-test\OffsitePlayerTest\bin\NWebsec.Core.dll
+D:\Code\offsite-player-test\OffsitePlayerTest\bin\NWebsec.dll
+D:\Code\offsite-player-test\OffsitePlayerTest\bin\NWebsec.Mvc.dll
+D:\Code\offsite-player-test\OffsitePlayerTest\bin\NWebsec.xml
+D:\Code\offsite-player-test\OffsitePlayerTest\bin\NWebsec.Core.xml
+D:\Code\offsite-player-test\OffsitePlayerTest\bin\NWebsec.Mvc.xml
