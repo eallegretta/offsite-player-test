@@ -81,8 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <None Include="Views\Player\Kaltura.cshtml" />
-    <None Include="Views\Player\BlogTalkRadio.cshtml" />
+    <Content Include="Views\Player\Kaltura.cshtml" />
+    <Content Include="Views\Player\BlogTalkRadio.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
