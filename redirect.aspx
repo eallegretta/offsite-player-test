@@ -1,5 +1,5 @@
 <%@ Page Language="C#" %>
 
 <%
-Response.Redirect(Server.MapPath("~/offsite-player3.html");
+Response.Redirect(Server.MapPath("~/offsite-player3.html"));
 %>
